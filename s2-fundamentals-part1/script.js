@@ -61,7 +61,7 @@ console.log(typeof null);
 
 // let:
 // -  we use let keyword to declare variables that can be changed later. That's also called 'mutate' a variable.
-// - wWe can also use let to declare empty variables at the beginning of the script, and assign values to them at a certain point based on certain conditions.
+// - we can also use let to declare empty variables at the beginning of the script, and assign values to them at a certain point based on certain conditions.
 
 // const: 
 //- declare variables that are not supposed to change, these variables are also called 'immutable variables'.
@@ -74,4 +74,96 @@ console.log(typeof null);
 // - the old way to declare variables, prior to ES6
 // - suggest to avoid using var
 
+// ---------------------------------
+// LECTURE 14. Basic Operators 
+// ---------------------------------
 
+// Math operators
+const now = 2037;
+const ageJonas = now - 1991;
+const ageSarah = now - 2018;
+console.log(ageJonas, ageSarah);
+
+console.log(ageJonas * 2, ageJonas / 10, 2 ** 3);
+
+const firstName = 'Jonas';
+const lastName = 'Schmedtmann';
+console.log(firstName + ' ' + lastName);
+
+// Assignment operators
+let x = 10 + 5;
+x += 10; // x = x + 10
+x *= 4; // x = x * 4
+x++; // x = x + 1
+x--; // x = x - 1
+console.log(x);
+
+// Comparison operators
+console.log(ageJonas > ageSarah);
+console.log(ageSarah >= 18);
+
+const isFullAge = ageSarah >= 18;
+
+console.log(now - 1991 > now - 2018);
+
+// ---------------------------------
+// LECTURE 15. Operator Precedence 
+// ---------------------------------
+
+const now = 2037;
+const ageJonas = now - 1991;
+const ageSarah = now - 2018;
+console.log(now - 1991 > now - 2018);
+
+// assignment operates from right to left
+let x, y;
+x = y = 25 - 10 - 5; // x = y = 10
+console.log(x, y);
+
+const averageAge = (ageJonas + ageSarah) / 2;
+console.log(ageJonas, ageSarah, averageAge);
+
+// ---------------------------------
+// LECTURE 16: coding challenge #1
+// ---------------------------------
+// TEST DATA 1
+const markWeight = 78;
+const markHeight = 1.69;
+const johnWeight = 92;
+const johnHeight = 1.95;
+
+const markBMI = markWeight / markHeight ** 2;
+const johnBMI = johnWeight / johnHeight ** 2;
+const markHigherBMI = markBMI > johnBMI;
+console.log(markBMI, johnBMI, markHigherBMI);
+
+// ------------------------------------------
+// LECTURE 17: Strings and Template Literals
+// ------------------------------------------
+const firstName = 'Jonas';
+const job = 'teacher';
+const birthYear = 1991;
+const year = 2037;
+
+const jonas = "I'm " + firstName + ', a ' + (year - birthYear) + ' years old ' + job + '!''
+console.log(jonas);
+
+// Template Literals 
+// Use backticks 
+const jonasNew = `I'm ${firstName}, a ${year - birthYear} year old ${job}!`;
+console.log(jonasNew);
+
+// Can also use backticks for regular string
+console.log(`Just a regular string ...`);
+
+// Create multiline strings 
+
+// old way
+console.log('String with \n\
+multiple \n\
+lines');
+
+// new way
+console.log(`String
+multiple
+lines`);
