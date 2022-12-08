@@ -167,3 +167,90 @@ lines');
 console.log(`String
 multiple
 lines`);
+
+// --------------------------------------------------
+// LECTURE 18: Taking Decisions: if/else statements
+// --------------------------------------------------
+
+const age = 15;
+
+if (age >= 18) {
+    console.log('Sarah can start driving license 🚗');
+} else {
+    const yearsLeft = 18 - age;
+    console.log(`Sarah is too young. Wait another ${yearsLeft} years :)`);
+}
+
+const birthYear = 1991;
+let century;
+if (birthYear <= 2000) {
+    century = 20;
+} else {
+    century = 21;
+}
+console.log(century); // if we do not define century outside of the if-else control strucutre, we would get error from this console.log(century)
+
+// --------------------------------------------------
+// LECTURE 19: coding challenge # 2
+// --------------------------------------------------
+
+if (markBMI > johnBMI) {
+    console.log("Mark's BMI is higher than John's!");
+} else {
+    console.log("John's BMI is higher than Mark's!");
+}
+
+if (markBMI > johnBMI) {
+    console.log(`Mark's BMI (${markBMI}) is higher than John's (${johnBMI})!`);
+} else {
+    console.log(`John's BMI (${johnBMI}) is higher than Mark's (${markBMI})!`);
+}
+
+// --------------------------------------------------
+// LECTURE 20: Type conversion and coercion 
+// --------------------------------------------------
+
+// ------ Type conversion
+// Suppose we ask users to input a year on our web interface, the input comes in as a string
+// in this case we cannot directly use the user input to do math operations
+// for example, we would get 199118 in the console from the below code
+const inputYear = '1991';
+console.log(inputYear + 18);
+
+// We can use Number() to convert to number
+console.log(Number(inputYear), inputYear);
+console.log(Number(inputYear) + 18);
+
+// We get NaN if Number() fails to produce a number
+console.log(Number('Jonas'));
+
+// NaN is still type of number, but it's invalid number
+console.log(typeof NaN);
+
+// Convert number to string
+// Note the function starts with capital: Number(), String()
+console.log(String(23), 23);
+
+// ------ Type coercion
+// type coercion happens whenever the operation is dealing with two values of different types
+// in that case, javascript will do type coercion behind the scenes, to convert one of the values to match the other value
+console.log('I am ' + 23 + ' years old');
+
+// minus sign triggers the conversion from string to number
+console.log('23' - '10' - 3); // we get 10
+
+// plus sign triggers the conversion from number to string
+console.log('23' + '10' + 3); // we get '23103'
+
+// *
+console.log('23' * '2'); // we get 46
+
+// exercise
+let n = '1' + 1; // '11'
+n = n - 1; // 10
+console.log(n);
+
+console.log(2 + 3 + 4 + '5'); // we get '95'
+
+console.log('10' - '4' - '3' - 2 + '5'); // we get '15'
+
