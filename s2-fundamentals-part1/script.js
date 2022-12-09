@@ -254,3 +254,141 @@ console.log(2 + 3 + 4 + '5'); // we get '95'
 
 console.log('10' - '4' - '3' - 2 + '5'); // we get '15'
 
+// --------------------------------------------------
+// LECTURE 21: Truthy and Falsy Values 
+// --------------------------------------------------
+
+// Falsy values are values that are not exactly false, but will become false when we try to convert them into a boolean
+// 5 falsy values: 0, '', undefined, null, NaN  
+// Everything else are Truthy values 
+
+console.log(Boolean(0)); // false
+console.log(Boolean(undefined)); // false
+console.log(Boolean('Jonas')); // true
+console.log(Boolean({})); // true
+
+// When does JavaScript do the type coercion to booleans? 
+// It happens in two scenarios:
+// 1. When using logical operators 
+// 2. In a logical context for example in the if-else statement
+
+const money = 0;
+if (money) {
+    console.log("Don't spend it all ;");
+} else {
+    console.log("You should get a job!");
+}
+
+let height;
+if (height) {
+    console.log('YAY! Height is defined');
+} else {
+    console.log('Height is UNDEFINED');
+}
+
+// --------------------------------------------------
+// LECTURE 22: Equality Operators: == vs. === 
+// --------------------------------------------------
+
+// === strict equality operator --> does not do type coercion
+// == loose equality operator --> does the type coercion
+console.log('18' == 18); // true
+console.log('18' === 18); // false
+console.log(18 === 18); // true
+
+// if there is just one line for the if condition, we don't need to use {}
+if ('18' === 18) console.log('You just became an adult :D (strict)');
+if ('18' == 18) console.log('You just became an adult :D (loose)');
+
+// General rule for clean code: avoid loose equality operator as much as possible
+
+// prompt 
+const favourite = Number(prompt("What's your favourite number?"))
+console.log(favourite); // if we enter 23 at the prompt, we get 23 in the console
+console.log(typeof favourite); // if we did not convert favourite to number, the type is string
+
+if (favourite === 23) {
+    console.log('Cool! 23 is an amazing number!');
+} else if (favourite === 7) {
+    console.log('7 is an amazing number!');
+} else {
+    console.log('Number is not 23 or 7');
+}
+
+// different operator
+// !== strict version, != loose version
+
+if (favourite !== 23) console.log('Why not 23?');
+
+// --------------------------------------------------
+// LECTURE 24: Logical Operators 
+// --------------------------------------------------
+const hasDriversLicense = true; // A
+const hasGoodVision = true; // B
+
+// AND: &&
+console.log(hasDriversLicense && hasGoodVision);
+
+// OR: ||
+console.log(hasDriversLicense || hasGoodVision);
+
+// NOT: !
+console.log(!hasDriversLicense);
+
+if (hasDriversLicense && hasGoodVision) {
+    console.log('Sarah is able to drive!');
+} else {
+    console.log('Someone else should drive ...');
+}
+
+const isTired = true; // C
+
+console.log(hasDriversLicense && hasGoodVision && isTired);
+
+if (hasDriversLicense && hasGoodVisio && !isTired) {
+    console.log('Sarah is able to drive!');
+} else {
+    console.log('Someone else should drive ...');
+}
+
+// --------------------------------------------------
+// LECTURE 25: coding challenge #3 
+// --------------------------------------------------
+// 1.
+let averageDolphins = (96 + 108 + 89) / 3;
+let averageKoalas = (88 + 91 + 110) / 3;
+
+// 2. 
+if (averageDolphins === averageKoalas) {
+    console.log('Draw!');
+} else if (averageDolphins > averageKoalas) {
+    console.log('Dolphins is the winner!');
+} else {
+    console.log('Koalas is the winner!');
+}
+
+// 3.
+averageDolphins = (97 + 112 + 101) / 3;
+averageKoalas = (109 + 95 + 123) / 3;
+
+if (averageDolphins === averageKoalas) {
+    console.log('Draw!');
+} else if (averageDolphins > averageKoalas && averageDolphins >= 100) {
+    console.log('Dolphins is the winner!');
+} else if (averageKoalas > averageDolphins && averageKoalas >= 100) {
+    console.log('Koalas is the winner!');
+}
+
+// 4.
+averageDolphins = (97 + 112 + 101) / 3;
+averageKoalas = (109 + 95 + 106) / 3;
+
+if (averageDolphins === averageKoalas && averageDolphins >= 100 && averageKoalas >= 100) {
+    console.log('Draw!');
+} else if (averageDolphins > averageKoalas && averageDolphins >= 100) {
+    console.log('Dolphins is the winner!');
+} else if (averageKoalas > averageDolphins && averageKoalas >= 100) {
+    console.log('Koalas is the winner!');
+} else {
+    console.log('No team wins the trophy.');
+}
