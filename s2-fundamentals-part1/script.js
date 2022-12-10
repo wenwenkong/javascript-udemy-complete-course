@@ -392,3 +392,97 @@ if (averageDolphins === averageKoalas && averageDolphins >= 100 && averageKoalas
 } else {
     console.log('No team wins the trophy.');
 }
+
+// --------------------------------------------------
+// LECTURE 26: The switch Statement 
+// --------------------------------------------------
+// switch statement is an alternative way to write if-else statement
+// and it does strict comparison (===)
+
+const day = 'monday';
+
+switch (day) {
+    case 'monday': // day === 'monday'
+        console.log('Plan course structure');
+        console.log('Go to coding meetup');
+        break;
+    case 'tuesday':
+        console.log('Prepare theory videos');
+        break;
+    case 'wednesday':
+    case 'thursday':
+        console.log('Write code examples');
+        break;
+    case 'friday':
+        console.log('Record videos');
+        break;
+    case 'saturday':
+    case 'sunday':
+        console.log('Enjoy the weekend :D');
+        break;
+    default:
+        console.log('Not a valid day!');
+}
+
+if (day === 'monday') {
+    console.log('Plan course structure');
+    console.log('Go to coding meetup');
+} else if (day === 'tuesday') {
+    console.log('Prepare theory videos');
+} else if (day === 'wednesday' || day === 'thursday') {
+    console.log('Write code examples');
+} else if (day === 'friday') {
+    onsole.log('Record videos');
+} else if (day === 'saturday' || day === 'sunday') {
+    console.log('Enjoy the weekend :D');
+} else {
+    console.log('Not a valid day!');
+}
+
+// --------------------------------------------------
+// LECTURE 27: Statements and Expressions 
+// --------------------------------------------------
+
+// Expression: a piece of code that produces value
+// Statement: a bigger piece of code that does not produce values itself 
+
+if (23 > 10) {
+    const str = '23 is bigger';
+}
+
+// In template literal, can only insert expressions not statements
+console.log(`I'm ${2037 - 1991} years old`);
+
+// --------------------------------------------------
+// LECTURE 28: The Conditional (Ternary) Operator  
+// --------------------------------------------------
+// Conditional operator allows us to write an if-else like statement in one line
+
+const age = 23;
+
+age >= 18 ? console.log('I like to drink wine') : console.log('I like to drink water');
+
+// Conditional operators are useful to conditionally declare variables 
+
+const drink = age >= 18 ? 'wine' : 'water'; // this operator is an expression, which produces value, and we can store that value to a variable, drink.
+console.log(drink);
+
+// To compare, below is an if-else statement, where we need to define drink2 outside the block, because any variables defined within the if-else structure are not available outside
+let drink2;
+if (age >= 18) {
+    drink2 = 'wine 🍷';
+} else {
+    drink2 = 'water 💧';
+}
+console.log(drink2);
+
+// Since the conditional operator is an expression, we can use it 
+// within template literal
+console.log(`I like to drink ${age >= 18 ? 'wine' : 'water}`);
+
+// --------------------------------------------------
+// LECTURE 29: coding challenge # 4
+// --------------------------------------------------
+const bill = 275;
+const tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill & 0.2;
+console.log(`The bill was ${bill}, the tip was ${tip}, and the total value ${tip + bill}`);
