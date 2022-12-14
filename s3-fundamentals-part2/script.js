@@ -333,3 +333,196 @@ if (friends.includes('Steven')) {
     console.log('You have a friend called Steven');
 }
 
+// -----------------------------------------------
+// Lecture 41. Coding Challenge #2
+// -----------------------------------------------
+
+function calcTip(bill) {
+    if (bill >= 50 && bill <= 300) {
+        return bill * 0.15;
+    } else {
+        return bill * 0.2;
+    }
+    /*
+    Could use a simpler ternary operator:
+    return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+    */
+}
+
+/*
+Could also use an arrow function
+
+const calcTip = bill => bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+
+*/
+
+console.log(calcTip(100));
+
+const bills = [125, 555, 44];
+
+const tips = [
+    calcTip(bills[0]),
+    calcTip(bills[1]),
+    calcTip(bills[2])
+];
+
+const total = [
+    bills[0] + tips[0],
+    bills[1] + tips[1],
+    bills[2] + tips[2]
+];
+
+// -----------------------------------------------
+// Lecture 42. Introduction to Objects 
+// -----------------------------------------------
+
+const jonasArray = [
+    'Jonas',
+    'Schmedtmann',
+    2037 - 1991,
+    'teacher',
+    ['Michael', 'Peter', 'Steven']
+];
+
+// In objects, we can have key:value pairs
+// Each key is also called 'properties'
+
+const jonasObject = {
+    firstName: 'Jonas',
+    lastName: 'Schmedtmann',
+    age: 2037 - 1991,
+    job: 'teacher',
+    friends: ['Michael', 'Peter', 'Steven']
+};
+
+// -----------------------------------------------
+// Lecture 43. Dot vs. Bracket Notation
+// -----------------------------------------------
+// How to retrieve data from objects and how to change data in objects
+
+console.log(jonasObject.lastName);
+console.log(jonasObject['lastName']);
+
+// The big difference between using dot vs bracket is we can put expressions in the bracket
+
+const nameKey = 'Name';
+console.log(jonasObject['first' + nameKey]);
+console.log(jonasObject['last' + nameKey]);
+
+/*
+Another example of why the bracket notation is useful
+
+Assume we need to use some input from user interface to determine 
+which properties we want to show
+*/
+const interestedIn = prompt('What do you want to know about Jonas? Choose between firstName, lastName, age, job, and friends');
+console.log(jonasObject[interestedIn]);
+
+/*
+If the property does not exist in the object, it returns 'undefined', 
+which is a falsy value; if it exists in the object, it returns a 
+truthy value. 
+
+We can thus build conditional statment based on this.
+*/
+
+if (jonasObject[interestedIn]) {
+    console.log(jonasObject[interestedIn]);
+} else {
+    console.log('Wrong request! Choose between firstName, lastName, age, job, and friend');
+}
+
+/*
+How to use dot and bracket notations to add new properties to the object
+*/
+
+jonasObject.location = 'Portugal';
+jonasObject['twitter'] = '@jonasschmedtman';
+console.log(jonasObject);
+
+// Challenge 
+// "Jonas has 3 friends, and his best friend is called Michael"
+console.log(`${jonasObject.firstName} has ${jonasObject.friends.length} friends, and his best friend is called ${jonasObject.friends[0]}`);
+
+// -----------------------------------------------
+// Lecture 44. Object Methods
+// -----------------------------------------------
+// Recall that functions are just values, we can add functions as values to objects
+
+const jonasObject2 = {
+    firstName: 'Jonas',
+    lastName: 'Schmedtmann',
+    birthYear: 1991,
+    job: 'teacher',
+    friends: ['Michael', 'Peter', 'Steven'],
+    hasDriversLicense: true,
+
+    // calcAge4: function (birthYear) {
+    //     return 2037 - birthYear
+    // }
+
+
+    // calcAge4: function () {
+    //     console.log(this);
+    //     return 2037 - this.birthYear;
+    // }
+
+    calcAge4: function () {
+        this.age = 2037 - this.birthYear;
+    },
+
+    // Challenge
+    getSummary: function () {
+        return `${this.firstName} is a ${this.calcAge4()}-year old ${this.job}, and he has ${this.hasDriversLicense ? 'a' : 'no'} driver's license.`;
+    }
+}
+
+// console.log(jonasObject2.calcAge4(jonasObject2.birthYear));
+// console.log(jonasObject2['calcAge4'](jonasObject2['birthYear']));
+
+console.log(jonasObject2.calcAge4());
+console.log(jonasObject2.age());
+console.log(jonasObject2.age());
+console.log(jonasObject2.age());
+
+// Challenge
+// "Jonas is a 46-year old teacher, and he has a driver's license."
+console.log(jonasObject2.getSummary());
+
+// -----------------------------------------------
+// Lecture 45. Coding Challenge #3
+// -----------------------------------------------
+
+const markObject = {
+    fullName: 'Mark Miller',
+    mass: 78,
+    height: 1.69,
+    calcBMI: function () {
+        this.BMI = this.mass / (this.height * this.height);
+        return this.BMI;
+    }
+}
+
+const johnObject = {
+    fullName: 'John Smith',
+    mass: 92,
+    height: 1.95,
+    calcBMI: function () {
+        this.BMI = this.mass / (this.height * this.height);
+        return this.BMI;
+    }
+}
+
+markObject.calcBMI();
+johnObject.calcBMI();
+console.log(markObject.BMI, johnObject.BMI);
+
+// What I did:
+console.log(`${johnObject.fullName}'s BMI (${johnObject.calcBMI()}) is ${johnObject.calcBMI() > markObject.calcBMI() ? 'higher' : 'lower'} than ${markObject.fullName}'s (${markObject.calcBMI()})!`);
+
+// Instructor's code:
+if (markObject.BMI > johnObject.BMI) {
+    console.log(`${markObject.fullName}'s BMI (${markObject.BMI}) is higher than ${johnObject.fullName}'s BMI(${johnObject.BMI})`);
+} else if (johnObject.BMI > markObject.BMI) {
+    console.log(`${johnObject.fullName}'s BMI (${johnObject.BMI}) is higher than ${markObject.fullName}'s BMI(${markObject.BMI})`);
+}
