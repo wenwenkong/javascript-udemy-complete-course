@@ -199,3 +199,45 @@ const myCountry2 = {
 myCountry2.describe();
 myCountry2.checkIsland();
 console.log(myCountry2);
+
+// -----------------------------------------------
+// Lecture 46. Iteration: The for Loop
+// -----------------------------------------------
+for (let i = 1; i < 51; i++) {
+    console.log(`Voter number ${i} is currently voting`);
+}
+
+// -----------------------------------------------------
+// Lecture 47. Looping Arrays, Breaking and Continuing 
+// -----------------------------------------------------
+const percentages2 = [];
+for (i = 0; i < populations.length; i++) {
+    percentages2.push(percentageOfWorld1(populations[i]));
+}
+console.log(percentages, percentages2);
+
+// -----------------------------------------------------
+// Lecture 48. Looping Backwards and Loops in Loops
+// -----------------------------------------------------
+listOfNeighbours = [
+    ['Canada', 'Mexico'],
+    ['Spain'],
+    ['Norway', 'Sweden', 'Russia']
+];
+
+for (let i = 0; i < listOfNeighbours.length; i++) {
+    for (let y = 0; y < listOfNeighbours[i].length; y++) {
+        console.log(`Neighbour: ${listOfNeighbours[i][y]}`);
+    }
+}
+
+// -----------------------------------------------------
+// Lecture 49. The while Loop
+// -----------------------------------------------------
+percentages3 = [];
+let i = 0;
+while (i < populations.length) {
+    percentages3.push(percentageOfWorld1(populations[i]));
+    i++;
+}
+console.log(percentages3);

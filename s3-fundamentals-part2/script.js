@@ -526,3 +526,137 @@ if (markObject.BMI > johnObject.BMI) {
 } else if (johnObject.BMI > markObject.BMI) {
     console.log(`${johnObject.fullName}'s BMI (${johnObject.BMI}) is higher than ${markObject.fullName}'s BMI(${markObject.BMI})`);
 }
+
+// -----------------------------------------------
+// Lecture 46. Iteration: The for Loop
+// -----------------------------------------------
+
+// for loop keeps running while condition is TRUE
+for (let rep = 1; rep <= 10; rep++) {
+    console.log(`Lifting weights repetition ${rep} 🏋️‍♀️`);
+}
+
+// -----------------------------------------------------
+// Lecture 47. Looping Arrays, Breaking and Continuing 
+// -----------------------------------------------------
+
+/*
+Example 1
+*/
+const types = [];
+const types2 = [];
+
+for (let i = 0; i < jonasArray.length; i++) {
+
+    // Reading from jonasArray array
+    console.log(jonasArray[i], typeof jonasArray[i]);
+
+    // Filling types array
+    types[i] = typeof jonasArray[i];
+
+    // Using the push method to fill an array
+    types2.push(typeof jonasArray[i]);
+}
+
+console.log(types);
+console.log(types2);
+
+/*
+Example 2
+*/
+const years3 = [1991, 2007, 1969, 2020];
+const ages2 = [];
+
+for (let i = 0; i < years3.length; i++) {
+    ages2.push(2037 - years[i]);
+}
+console.log(ages2);
+
+/*
+continue and break statement
+
+continue - immediately exit the current iteration 
+
+break - completely terminates the whole loop 
+*/
+
+// Let's say, we only want to print out array elements that are strings
+console.log('--- ONLY STRINGS ---');
+for (let i = 0; i < jonasArray.length; i++) {
+    if (typeof jonasArray[i] !== 'string') continue;
+    console.log(jonasArray[i], typeof jonasArray[i]);
+}
+
+// Let'say, we want to not log any other elements once we find a number
+console.log('--- BREAK WITH NUMBER ---');
+for (let i = 0; i < jonasArray.length; i++) {
+    if (typeof jonasArray[i] === 'number') break;
+    console.log(jonasArray[i], typeof jonasArray[i]);
+}
+
+// -----------------------------------------------------
+// Lecture 48. Looping Backwards and Loops in Loops
+// -----------------------------------------------------
+
+// Looping Backwards
+for (let i = jonasArray.length - 1; i >= 0; i--) {
+    console.log(i, jonasArray[i]);
+}
+
+// Loops in Loops
+for (let exercise = 1; exercise < 4; exercise++) {
+    console.log(`-------- Starting exercise ${exercise}`);
+
+    for (let rep = 1; rep < 6; rep++) {
+        console.log(`Exercise ${exercise}: Lifting weight repetition ${rep}`);
+    }
+}
+
+// -----------------------------------------------------
+// Lecture 49. The while Loop
+// -----------------------------------------------------
+/*
+Example 1
+*/
+let rep = 1;
+while (rep <= 10) {
+    console.log(`Lifting weights repetition ${rep}`);
+    rep++;
+}
+
+/*
+Example 2
+*/
+let dice = Math.trunc(Math.random() * 6) + 1; // random number 1 to 6
+
+while (dice !== 6) {
+    console.log(`You rolled a ${dice}`);
+    dice = Math.trunc(Math.random() * 6) + 1;
+    if (dice === 6) console.log('Loop is about to end ...');
+}
+
+
+// -----------------------------------------------------
+// Lecture 50. Coding Challenge #4
+// -----------------------------------------------------
+bills2 = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+tips2 = [];
+totals2 = [];
+
+for (let i = 0; i < bills2.length; i++) {
+    const tip = calcTip(bills2[i]);
+    tips2.push(tip);
+    totals2.push(bills2[i] + tip);
+}
+console.log(bills2, tips2, totals2);
+
+// BONUS
+const calcAverage2 = function (arr) {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    }
+    return sum / arr.length;
+}
+
+console.log(calcAverage2(totals2));
