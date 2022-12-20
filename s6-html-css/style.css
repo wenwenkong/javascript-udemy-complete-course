@@ -1,0 +1,65 @@
+/* Global selector */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body selector */
+body {
+  background-color: rgb(230, 227, 152);
+  font-family: Arial;
+  font-size: 20px;
+  padding: 50px;
+}
+
+h1 {
+  font-size: 35px;
+  margin-bottom: 25px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Paragraph selector */
+p {
+  margin-bottom: 20px;
+}
+
+/* Selector for a specific class */
+.first {
+  color: red;
+}
+
+/* Selector for a specific id */
+#your-name {
+  background-color: rgb(235, 178, 43);
+  border: 5px solid #444;
+  width: 400px;
+  padding: 25px;
+  margin-top: 30px;
+}
+
+/* Input and button */
+input,
+button {
+  padding: 10px;
+  font-size: 16px;
+}
+
+/* Hyperlink */
+a {
+  background-color: yellowgreen;
+}
+
+/* Child selector - only select the h2 within the your-name id box */
+#your-name h2 {
+  color: olivedrab;
+}
+
+/* Image */
+#course-image {
+  width: 300px;
+}
