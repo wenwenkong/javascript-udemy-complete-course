@@ -88,3 +88,82 @@ Modern JIT compilation of JavaScript
 
 JS runtime in the browser and Node.js 
 */
+
+// --------------------------------------------------
+// Lecture 91. Execution Contexts and The Call Stack
+// --------------------------------------------------
+
+/*
+Execution Context steps 
+    - A so-called global execution context is created for the top-level code. Top-level code is any code that is not inside any function. So, at the beginning, only the code that is outside of functions will be executed. 
+    - In any JS project, no matter how large it is, there is only ever one global execution context. It's always there as the default context, and it's where top-level code will execute. 
+    - Once the execution of top-level code is finished, execution of functions and waiting for callbacks. For each and every function call, a new execution context will be created containing all the information that is necessary to run exactly that function. 
+
+Exectuion Context In Detail 
+    - What's inside execution context?
+        1. Variable Environment: 
+            - let, const, and var declarations
+            - Functions
+            - arguments object 
+        2. Scope chain (consists of references to variables that are located outside of the current function). To keep track of the scope chain, it is stored in each execution context. Each context gets a special variable called the this keyword.  
+        3. this keyword
+    
+    - Note for arrow functions: execution contexts belonging to arrow functions do not get their own arguments keyword and this keyword. 
+
+*/
+
+// --------------------------------------------------
+// Lecture 92. Scope and The Scope Chain
+// --------------------------------------------------
+
+/*
+Concepts
+    - Scoping
+        - Controls how our program's variables are organized and accessed. "Where do variables live?" or "Where can we access a certain variable, and where not?"
+
+    - Lexical scoping
+        - Scoping is controlled by placement of functions and blocks in the code; for example, a function that's written inside another function has access to the variables defined in the parent function. 
+
+    - Scope
+        - Space or environment in which a certain variable is declared (variable environment in case of functions). There is global scope, function scope, and block scope; 
+
+    - Scope of a variable
+        - The entire region of our code where a certain variable can be accessed. 
+
+The 3 types of scope 
+    - Global scope
+        - Outside of any function or block
+        - Variables declared in global scope are accessible everywhere
+
+    - Function scope
+        - Variables are accessible ONLY inside function, NOT outside
+        - Also called local scope 
+
+    - Block scope (ES6)
+        - Variables are accessible ONLY inside block (example: if block, for loop block, etc)
+        - HOWEVER, this only applies to let and const variables
+            - If we create a variable using var, then that variable is still accessible outside of the block, and would be scoped to the current function or to the global scope
+            - So we say let and const are block scoped, while var is function scoped 
+        - Functions are also block scoped (only in strict mode)
+
+The scope chain
+    - Variable look up
+    - Every scope always has access to variables from all outer scopes
+    - A certain scope will never ever have access to variables in its inner scope 
+    - Again, var is function scoped, while let and const are block scoped 
+    - Scope chain only works upwards, not sideways. Thus, sibling scopes cannot access each other
+
+Scope chain vs. Call stack 
+    - Scope chain has nothing to do with the order in which functions were called. Or, in other words, scope chain has nothing to do with the order of the execution contexts in the call stack. 
+    - 
+
+SUMMARY
+    - Scoping asks the question "Where do variables live?" or "Where can we access a certain variable, and where not?"
+    - 3 types of scope in JS
+    - Only let and const variables are block-scoped; Variables declared with var end up in the closest function scope;
+    - Lexical scoping 
+    - Scope chain: every scope always has access to all the vars from all its outer scopes
+    - Variable lookup
+    - ... ... 
+
+*/
